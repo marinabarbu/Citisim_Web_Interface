@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+{% if all_energy %}
+    <table style="width:100%">
+      <tr>
+        <th>ID</th>
+        <th>Source</th>
+        <th>Time</th>
+        <th>Value</th>
+      </tr>
+        {% for e in all_energy %}
+        <tr>
+            <td>{{ e.idd }}</td>
+            <td>{{ e.source}} </td>
+            <td>{{ e.time_string }} </td>
+            <td>{{ e.data }} </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+{% else %}
+    <h3>Nu ai date despre energie</h3>
+{% endif %}
+
+</body>
+</html>
