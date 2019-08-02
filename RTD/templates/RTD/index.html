@@ -1,6 +1,15 @@
+
+{% load staticfiles %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href = "{% static 'RTD/style.css' %}">
+
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href = "{% static 'RTD/style.css' %}">
 <style>
 table, th, td {
   border: 1px solid black;
@@ -8,23 +17,35 @@ table, th, td {
 </style>
 </head>
 <body>
-{% if all_energy %}
-    <table style="width:100%">
-      <tr>
-        <th>ID</th>
-        <th>Source</th>
-        <th>Time</th>
-        <th>Value</th>
-      </tr>
-        {% for e in all_energy %}
-        <tr>
-            <td>{{ e.idd }}</td>
-            <td>{{ e.source}} </td>
-            <td>{{ e.time_string }} </td>
-            <td>{{ e.data }} </td>
-        </tr>
-        {% endfor %}
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'index' %}">RTD</a>
+        </div>
+    </div>
+</nav>
 
+{% if all_energy %}
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Source</th>
+            <th scope="col">Time</th>
+            <th scope="col">Value</th>
+          </tr>
+          </thead>
+            <tbody>
+            {% for e in all_energy %}
+            <tr>
+                <td>{{ e.idd }}</td>
+                <td>{{ e.source}} </td>
+                <td>{{ e.time_string }} </td>
+                <td>{{ e.data }} </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
     </table>
 {% else %}
     <h3>Nu ai date despre energie</h3>
