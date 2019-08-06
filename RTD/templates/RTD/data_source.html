@@ -23,11 +23,6 @@ table, th, td {
             <a class="navbar-brand" href="{% url 'index' %}">RTD</a>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/RTD/data/">Graph</a>
-        </div>
-    </div>
 
 </nav>
 
@@ -36,7 +31,6 @@ table, th, td {
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Source</th>
             <th scope="col">Time</th>
             <th scope="col">Value</th>
           </tr>
@@ -45,7 +39,6 @@ table, th, td {
             {% for e in all_energy %}
             <tr>
                 <td><a href="/RTD/{{ e.idd }}/">{{ e.idd }}</a></td>
-                <td><a href="/RTD/{{ e.source }}/">{{ e.source}} </a></td>
                 <td>{{ e.time_string }} </td>
                 <td>{{ e.data }} </td>
             </tr>

@@ -18,6 +18,7 @@ from django.urls import path
 from django.conf.urls import url, include
 
 urlpatterns = [
+    #url(r'^', admin.site.urls),
     url(r'^admin/', admin.site.urls), #primul argument e adresa(regex de la r) si al 2-lea este raspunsul
-    url(r'^RTD/', include('RTD.urls')),
+    url(r'^RTD/', include('RTD.urls'))
 ]

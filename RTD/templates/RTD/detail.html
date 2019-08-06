@@ -1,1 +1,33 @@
-{{ energy }}
+
+{% load staticfiles %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href = "{% static 'RTD/style.css' %}">
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href = "{% static 'RTD/style.css' %}">
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'index' %}">RTD</a>
+        </div>
+    </div>
+
+</nav>
+
+Data cu id-ul {{ e.idd }} provine de la sursa {{ e.source }}, are ca timestamp {{ e.timestamp }}.
+<p>Valoarea sa este {{ e.data }} la {{ e.time_string }}</p>
+
+</body>
+</html>
