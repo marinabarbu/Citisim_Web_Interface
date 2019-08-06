@@ -1,0 +1,112 @@
+{% load staticfiles %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href = "{% static 'RTD/style.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta chartset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<title>My Chart.js Chart</title>
+</head>
+<body>
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">CitiSim</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'get_data' %}">Graph</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Select</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<!--/.Navbar-->
+
+
+	<div class="container">
+		<canvas id="myChart"></canvas>
+	</div>
+	<script>
+		let myChart = document.getElementById('myChart').getContext('2d');
+
+		//Global Options
+		Chart.defaults.global.defaultFontFamily='Lato';
+		Chart.defaults.global.defaultFontSize = 18;
+		Chart.defaults.global.defaultFontColor = '#777';
+
+
+		let massPopChart = new Chart(myChart, {
+			type:'line',
+			data: {
+				labels:['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
+				datasets:[{
+					label:'Population',
+					data:[
+						617594,
+						181045,
+						153060,
+						106519,
+						105162,
+						95072
+					],
+					backgroundColor: 'pink',
+					backgroundColor: [
+						'rgba(215, 166, 143, 0.7)',
+						'rgba(215, 113, 203, 0.7)',
+						'rgba(215, 208, 203, 0.7)',
+						'rgba(0, 208, 203, 0.5)',
+						'rgba(0, 208, 143, 0.5)',
+						'rgba(0, 43, 143, 0.5)'
+						],
+					borderWidth:1,
+					borderColor: '#777',
+					hoverBorderWidth: 3,
+					hoverBorderCorol:'#000',
+				}]
+			},
+			options:{
+				title:{
+					display:true,
+					text:'Largest Cities in Massachusetts',
+					fintSize:25
+
+				},
+				legend:{
+					position:'right',
+					labels:{
+						fontColor:'#000'
+					}
+				},
+				layout:{
+					padding:{
+						left:50,
+						right:0,
+						bottom:0,
+						top:0
+					}
+				},
+				tooltips:{
+					enabled:true
+				}
+			}
+		});
+	</script>
+</body>
+</html>
