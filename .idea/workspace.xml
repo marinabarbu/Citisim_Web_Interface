@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="965f1c79-ea0c-48b5-892e-6bdec3e2f8df" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/RTD/templates/RTD/line_chart.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTD/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTD/templates/base/bootstrap_defaults.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTD/templates/base/css.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTD/templates/base/js.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RTD/templates/charts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/CitiSim_Web_Interface.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CitiSim_Web_Interface.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CitiSim_Web_Interface/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/CitiSim_Web_Interface/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CitiSim_Web_Interface/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/CitiSim_Web_Interface/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RTD/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RTD/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

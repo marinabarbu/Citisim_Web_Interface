@@ -6,6 +6,9 @@ from chartjs.views.lines import BaseLineChartView
 from django.http import JsonResponse
 from django.template import loader
 from django.views.generic import View
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.contrib.auth import get_user_model
 
 # Create your views here.
 # FUNCTII care iau cererea user ului si raspund la cerere
@@ -50,3 +53,21 @@ class LineChartJSONView(BaseLineChartView):
 line_chart = TemplateView.as_view(template_name='line_chart.html')
 line_chart_json = LineChartJSONView.as_view()
 
+User = get_user_model()
+class HomeView(View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'charts.html')
+
+class ChartData(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        qs_count = User.objects.all().count()
+        labels = ['Users', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']
+        default_items = [qs_count, 1234, 123, 32, 12, 2]
+        data = {
+            "labels": labels,
+            "default": default_items,
+        }
+        return Response(data)
