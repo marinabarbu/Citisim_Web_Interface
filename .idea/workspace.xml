@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="965f1c79-ea0c-48b5-892e-6bdec3e2f8df" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/charts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/get_data.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/get_data.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RTD/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RTD/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -44,6 +44,34 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="views" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="CitiSim_Web_Interface" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/RTD" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RTD/views.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.views" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -91,7 +119,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566405218406</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="resolved the problem with the url for charts.html">
+      <created>1566469450042</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1566469450042</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -116,6 +151,7 @@
     <MESSAGE value="Added detail functionality and strated to integrate ChartJS" />
     <MESSAGE value="Added navbar with links to home page, to a ChartJS and also added reference for details for each data and reference for each source" />
     <MESSAGE value="added ChartJS graphs &#10;problems with the urls" />
-    <option name="LAST_COMMIT_MESSAGE" value="added ChartJS graphs &#10;problems with the urls" />
+    <MESSAGE value="resolved the problem with the url for charts.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="resolved the problem with the url for charts.html" />
   </component>
 </project>

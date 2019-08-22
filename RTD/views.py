@@ -57,7 +57,7 @@ User = get_user_model()
 class HomeView(View):
     def get(self, request, *args, **kwargs):
         all_energy = Energy.objects.all()
-        return render(request, 'RTD/charts.html', {'all_energy': all_energy})
+        return render(request, 'RTD/charts.html')
 
 class ChartData(APIView):
     authentication_classes = []
@@ -65,10 +65,23 @@ class ChartData(APIView):
 
     def get(self, request, format=None):
         qs_count = User.objects.all().count()
-        labels = ['Users', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']
-        default_items = [qs_count, 1234, 123, 32, 12, 2]
+        all_energy = Energy.objects.filter(time_string__startswith='07', source='0A06FF0000000003')
+        iulie_labels, iulie_data = [], []
+        for e in all_energy:
+            iulie_labels.append(e.idd)
+            iulie_data.append(e.data)
+        #iulie_labels = ['Users', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']
+        #iulie_data = [qs_count, 1234, 123, 32, 12, 2]
+        all_energy = Energy.objects.filter(time_string__startswith='08', source='0A06FF0000000003')
+        august_labels, august_data = [], []
+        for e in all_energy:
+            august_labels.append(e.idd)
+            august_data.append(e.data)
         data = {
-            "labels": labels,
-            "default": default_items,
+            "labels_iulie": iulie_labels,
+            "default_iulie": iulie_data,
+            "labels_august": august_labels,
+            "default_august": august_data,
+
         }
         return Response(data)
