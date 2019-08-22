@@ -1,4 +1,3 @@
-
 {% load staticfiles %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href = "{% static 'RTD/style.css' %}">
@@ -9,32 +8,8 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-<!--
-    <link rel="stylesheet" type="text/css" href = "{% static 'RTD/style.css' %}">
-<style>
-table, th, td {
-  border: 1px solid black;
-}
-</style>
--->
 </head>
 <body>
-<!--
-
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="{% url 'index' %}">RTD</a>
-        </div>
-    </div>
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/RTD/data/">Graph</a>
-        </div>
-    </div>
-
-</nav>
--->
 
 <!--Navbar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -51,7 +26,7 @@ table, th, td {
         <a class="nav-link" href="{% url 'chart' %}">Graph</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Select</a>
+        <a class="nav-link" href="{% url 'select' %}">Select</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
@@ -62,7 +37,6 @@ table, th, td {
 </nav>
 <!--/.Navbar-->
 
-<!--{% if all_energy %} -->
     <table class="table table-striped">
         <thead>
           <tr>
@@ -81,13 +55,7 @@ table, th, td {
                 <td>{{ e.data }} </td>
             </tr>
             {% endfor %}
-
         </tbody>
     </table>
-<!--
-{% else %}
-    <h3>Nu ai date despre energie</h3>
-{% endif %}
--->
 </body>
 </html>

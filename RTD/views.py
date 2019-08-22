@@ -16,6 +16,21 @@ from django.contrib.auth import get_user_model
 def index(request):
     all_energy = Energy.objects.all()
     return render(request, 'RTD/index.html', {'all_energy' : all_energy})
+energy_set = set()
+def select(request):
+    all_energy = Energy.objects.all()
+    #energy_set = set()
+    for e in all_energy:
+        energy_set.add(e.time_string[0:10])
+    energy_time = list(energy_set)
+    return render(request, 'RTD/select.html', {'energy_time': energy_time})
+
+def action_action(request):
+    if request.GET.get('action_button'):
+        l = (list(energy_set)).sort()
+        print('actiune buton')
+    return render(request, 'RTD/select.html', {'l': l})
+
 
 def detail(request, e_idd):
     #return HttpResponse("<h2>Details from Album id: " + str(e_id) + "</h2>")
@@ -70,8 +85,6 @@ class ChartData(APIView):
         for e in all_energy:
             iulie_labels.append(e.idd)
             iulie_data.append(e.data)
-        #iulie_labels = ['Users', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange']
-        #iulie_data = [qs_count, 1234, 123, 32, 12, 2]
         all_energy = Energy.objects.filter(time_string__startswith='08', source='0A06FF0000000003')
         august_labels, august_data = [], []
         for e in all_energy:
@@ -82,6 +95,5 @@ class ChartData(APIView):
             "default_iulie": iulie_data,
             "labels_august": august_labels,
             "default_august": august_data,
-
         }
         return Response(data)

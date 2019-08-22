@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="965f1c79-ea0c-48b5-892e-6bdec3e2f8df" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/RTD/templates/RTD/select.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/charts.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/data_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/data_source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/get_data.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/get_data.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RTD/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RTD/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RTD/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -136,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566475874846</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="customized the chart page and add a new chart">
+      <created>1566480971583</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1566480971583</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -163,6 +170,7 @@
     <MESSAGE value="added ChartJS graphs &#10;problems with the urls" />
     <MESSAGE value="resolved the problem with the url for charts.html" />
     <MESSAGE value="connect ChartJS to database" />
-    <option name="LAST_COMMIT_MESSAGE" value="connect ChartJS to database" />
+    <MESSAGE value="customized the chart page and add a new chart" />
+    <option name="LAST_COMMIT_MESSAGE" value="customized the chart page and add a new chart" />
   </component>
 </project>
