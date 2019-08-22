@@ -5,8 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/charts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RTD/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/data_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/data_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/get_data.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/get_data.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RTD/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566469450042</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="connect ChartJS to database">
+      <created>1566475874846</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1566475874846</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -152,6 +162,7 @@
     <MESSAGE value="Added navbar with links to home page, to a ChartJS and also added reference for details for each data and reference for each source" />
     <MESSAGE value="added ChartJS graphs &#10;problems with the urls" />
     <MESSAGE value="resolved the problem with the url for charts.html" />
-    <option name="LAST_COMMIT_MESSAGE" value="resolved the problem with the url for charts.html" />
+    <MESSAGE value="connect ChartJS to database" />
+    <option name="LAST_COMMIT_MESSAGE" value="connect ChartJS to database" />
   </component>
 </project>
