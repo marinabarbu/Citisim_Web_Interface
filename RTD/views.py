@@ -56,7 +56,8 @@ line_chart_json = LineChartJSONView.as_view()
 User = get_user_model()
 class HomeView(View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'charts.html')
+        all_energy = Energy.objects.all()
+        return render(request, 'RTD/charts.html', {'all_energy': all_energy})
 
 class ChartData(APIView):
     authentication_classes = []

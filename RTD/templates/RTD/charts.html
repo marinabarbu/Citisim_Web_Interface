@@ -3,7 +3,7 @@
 <script>
 alert('this is an alert');
 {% block jquery %}
-var endpoint = '/api/chart/data/'
+var endpoint = '/RTD/api/chart/data/'
 var defaultData = []
 var labels = [];
 $.ajax({
@@ -41,7 +41,7 @@ function setChart(){
 
 <div class='row'>
     <div class='col-sm-12' url-endpoint='{% url "api-data" %}'>
-        <h1>Hello World</h1>
+        <h1>Charts</h1>
         <canvas id="myChart" width="400" height="400"></canvas>
 
     </div>

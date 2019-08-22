@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="965f1c79-ea0c-48b5-892e-6bdec3e2f8df" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/RTD/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RTD/templates/base/bootstrap_defaults.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RTD/templates/base/css.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RTD/templates/base/js.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RTD/templates/charts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/CitiSim_Web_Interface.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CitiSim_Web_Interface.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CitiSim_Web_Interface/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/CitiSim_Web_Interface/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/charts.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/charts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/get_data.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/get_data.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RTD/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RTD/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/views.py" afterDir="false" />
     </list>
@@ -27,11 +21,6 @@
         <option value="HTML File" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>data</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -95,7 +84,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565088644465</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added ChartJS graphs &#10;problems with the urls">
+      <created>1566405218406</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1566405218406</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -119,6 +115,7 @@
     <MESSAGE value="Added bootstrap functionalities: navigation bar,  background image, customized table" />
     <MESSAGE value="Added detail functionality and strated to integrate ChartJS" />
     <MESSAGE value="Added navbar with links to home page, to a ChartJS and also added reference for details for each data and reference for each source" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added navbar with links to home page, to a ChartJS and also added reference for details for each data and reference for each source" />
+    <MESSAGE value="added ChartJS graphs &#10;problems with the urls" />
+    <option name="LAST_COMMIT_MESSAGE" value="added ChartJS graphs &#10;problems with the urls" />
   </component>
 </project>
