@@ -1,5 +1,18 @@
 {% extends 'RTD/base.html' %}
 
+{% block content %}
+
+<div class='row'>
+    <div class='col-sm-12' url-endpoint='{% url "api-data" %}'>
+        <h1>Charts</h1>
+        <button class='btn btn-success' onclick="setChart()">Update all Charts</button>
+        <canvas id="myChart" width="800" height="350"></canvas>
+        <canvas id="myChart2" width="800" height="350"></canvas>
+        <canvas id="myChart3" width="800" height="350"></canvas>
+        <button class='btn btn-success' onclick="updateChart()">Refresh</button>
+    </div>
+</div>
+
 <script>
 {% block jquery %}
 var endpoint = '/RTD/api/chart/data/'
@@ -7,6 +20,8 @@ var defaultData_iulie = []
 var labels_iulie = [];
 var defaultData_august = []
 var labels_august = [];
+var defaultData_septembrie = []
+var labels_septembrie = [];
 $.ajax({
     method: "GET",
     url: endpoint,
@@ -15,6 +30,8 @@ $.ajax({
         defaultData_iulie = data.default_iulie
         labels_august = data.labels_august
         defaultData_august = data.default_august
+        labels_septembrie = data.labels_septembrie
+        defaultData_septembrie = data.default_septembrie
         setChart()
     },
     error: function(error_data){
@@ -23,9 +40,11 @@ $.ajax({
     }
 })
 
+var ctx = document.getElementById('myChart');
+var ctx2 = document.getElementById('myChart2');
+var ctx3 = document.getElementById('myChart3');
+
 function setChart(){
-    var ctx = document.getElementById('myChart');
-    var ctx2 = document.getElementById('myChart2');
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
@@ -36,7 +55,7 @@ function setChart(){
                 }]
             }
         })
-        var myChart = new Chart(ctx2, {
+        var myChart2 = new Chart(ctx2, {
             type: 'line',
             data: {
                 labels: labels_august,
@@ -46,19 +65,34 @@ function setChart(){
                 }]
             }
         })
+        var myChart3 = new Chart(ctx3, {
+            type: 'line',
+            data: {
+                labels: labels_septembrie,
+                datasets: [{
+                    label: 'Septembrie',
+                    data: defaultData_septembrie,
+                }]
+            }
+        })
 }
+
+function updateChart(){
+    var myChart3 = new Chart(ctx3, {
+            type: 'line',
+            data: {
+                labels: labels_septembrie,
+                datasets: [{
+                    label: 'Septembrie',
+                    data: defaultData_septembrie,
+                }]
+            }
+        })
+    myChart3.update();
+}
+
 
 {% endblock %}
 </script>
-
-{% block content %}
-
-<div class='row'>
-    <div class='col-sm-12' url-endpoint='{% url "api-data" %}'>
-        <h1>Charts</h1>
-        <canvas id="myChart" width="800" height="350"></canvas>
-        <canvas id="myChart2" width="800" height="350"></canvas>
-    </div>
-</div>
 
 {% endblock content %}

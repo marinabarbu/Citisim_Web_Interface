@@ -16,6 +16,7 @@ from django.contrib.auth import get_user_model
 def index(request):
     all_energy = Energy.objects.all()
     return render(request, 'RTD/index.html', {'all_energy' : all_energy})
+
 energy_set = set()
 def select(request):
     all_energy = Energy.objects.all()
@@ -90,10 +91,18 @@ class ChartData(APIView):
         for e in all_energy:
             august_labels.append(e.idd)
             august_data.append(e.data)
+
+        all_energy = Energy.objects.filter(time_string__startswith='09', source='0A06FF0000000003')
+        septembrie_labels, septembrie_data = [], []
+        for e in all_energy:
+            septembrie_labels.append(e.idd)
+            septembrie_data.append(e.data)
         data = {
             "labels_iulie": iulie_labels,
             "default_iulie": iulie_data,
             "labels_august": august_labels,
             "default_august": august_data,
+            "labels_septembrie": septembrie_labels,
+            "default_septembrie": septembrie_data,
         }
         return Response(data)
