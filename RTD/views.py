@@ -92,7 +92,7 @@ class ChartData(APIView):
             august_labels.append(e.idd)
             august_data.append(e.data)
 
-        all_energy = Energy.objects.filter(time_string__startswith='09', source='0A06FF0000000003')
+        all_energy = Energy.objects.filter(time_string__startswith='09', source='000111AA')
         septembrie_labels, septembrie_data = [], []
         for e in all_energy:
             septembrie_labels.append(e.idd)

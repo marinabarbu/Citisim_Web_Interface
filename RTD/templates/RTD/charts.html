@@ -5,7 +5,7 @@
 <div class='row'>
     <div class='col-sm-12' url-endpoint='{% url "api-data" %}'>
         <h1>Charts</h1>
-        <button class='btn btn-success' onclick="setChart()">Update all Charts</button>
+        <button class='btn btn-success' onclick="ajaxCall()">Update all Charts</button>
         <canvas id="myChart" width="800" height="350"></canvas>
         <canvas id="myChart2" width="800" height="350"></canvas>
         <canvas id="myChart3" width="800" height="350"></canvas>
@@ -14,7 +14,7 @@
 </div>
 
 <script>
-{% block jquery %}
+
 var endpoint = '/RTD/api/chart/data/'
 var defaultData_iulie = []
 var labels_iulie = [];
@@ -22,23 +22,28 @@ var defaultData_august = []
 var labels_august = [];
 var defaultData_septembrie = []
 var labels_septembrie = [];
-$.ajax({
-    method: "GET",
-    url: endpoint,
-    success: function(data){
-        labels_iulie = data.labels_iulie
-        defaultData_iulie = data.default_iulie
-        labels_august = data.labels_august
-        defaultData_august = data.default_august
-        labels_septembrie = data.labels_septembrie
-        defaultData_septembrie = data.default_septembrie
-        setChart()
-    },
-    error: function(error_data){
-        console.log("error")
-        console.log(error_data)
-    }
-})
+setInterval(function(){ ajaxCall(); }, 3000);
+
+function ajaxCall(){
+    $.ajax({
+        method: "GET",
+        url: endpoint,
+        success: function(data){
+            labels_iulie = data.labels_iulie
+            defaultData_iulie = data.default_iulie
+            labels_august = data.labels_august
+            defaultData_august = data.default_august
+            labels_septembrie = data.labels_septembrie
+            defaultData_septembrie = data.default_septembrie
+            setChart()
+        },
+        error: function(error_data){
+            console.log("error")
+            console.log(error_data)
+        }
+    })
+}
+
 
 var ctx = document.getElementById('myChart');
 var ctx2 = document.getElementById('myChart2');
@@ -92,7 +97,7 @@ function updateChart(){
 }
 
 
-{% endblock %}
+
 </script>
 
 {% endblock content %}
