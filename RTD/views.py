@@ -69,7 +69,6 @@ class ChartData(APIView):
     permission_classes = []
 
     def get(self, request, format=None):
-        qs_count = User.objects.all().count()
         all_energy = Energy.objects.filter(time_string__startswith='07', source='0A06FF0000000003')
         iulie_labels, iulie_data = [], []
         for e in all_energy:
