@@ -1,3 +1,17 @@
+.scrollable{
+    height: 400px;
+    overflow: scroll;
+}
+
 body{
     background: white url("images/background.png");
+}
+
+.my-custom-scrollbar {
+position: relative;
+height: 200px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
 }

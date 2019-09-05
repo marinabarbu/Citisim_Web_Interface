@@ -1,11 +1,81 @@
 {% load staticfiles %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href = "{% static 'RTD/style.css' %}">
+
+<link rel="stylesheet" type="text/css" href="style.css">
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <style>
+
+        select.select{
+            margin: 30 auto;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div.ex2{
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div.ex1{
+            margin:0 auto;
+            width: 1000px;
+            height: 600px;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+            background: white url("static/RTD/images/background.png");
+            box-shadow: 0 10px 100px rgba(0,0,0,0.5);
+        }
+
+        table, th, td{
+            border: 1px solid #005277;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        table{
+            width: 100%;
+        }
+
+        table, th, td
+        {
+            border: 1px solid #1a1a1a;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th
+        {
+            position: sticky;
+            top: 0;
+            background: #a6a6a6;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        tr th:nth-child(1)
+        {
+            width: 60px;
+            text-align: center;
+            background: #a6a6a6;
+        }
+
+        tr td:nth-child(1)
+        {
+            background: #a6a6a6;
+            text-align: center;
+            color: #fff;
+        }
+
+    </style>
+
+    <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href = "{% static 'RTD/style.css' %}">
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -39,25 +109,35 @@
   </div>
 </nav>
 <!--/.Navbar-->
-    <table class="table table-striped " style="width:100%;">
-        <thead style="display: block;">
+
+<div class="ex2">
+    <select class="select">
+        <option value="sss">sss</option>
+    </select>
+
+</div>
+
+<div class="ex1">
+    <table>
+        <thead>
           <tr>
-            <th style="width:25%;" scope="col">ID</th>
-            <th style="width:25%;" scope="col">Source</th>
-            <th style="width:25%;" scope="col">Time</th>
-            <th style="width:25%;" scope="col">Value</th>
+            <th>ID</th>
+            <th>Source</th>
+            <th>Time</th>
+            <th>Value</th>
           </tr>
-          </thead>
-            <tbody style="height: 200px; overflow-y: auto; overflow-x: hidden; display: block;">
+        </thead>
+        <tbody>
             {% for e in all_energy %}
             <tr>
-                <td style="width:25%;" ><a href="/RTD/{{ e.idd }}/">{{ e.idd }}</a></td>
-                <td style="width:25%;" ><a href="/RTD/{{ e.source }}/">{{ e.source}} </a></td>
-                <td style="width:25%;" >{{ e.time_string }} </td>
-                <td style="width:25%;" >{{ e.data }} </td>
+                <td><a href="/RTD/{{ e.idd }}/">{{ e.idd }}</a></td>
+                <td><a href="/RTD/{{ e.source }}/">{{ e.source}} </a></td>
+                <td>{{ e.time_string }} </td>
+                <td>{{ e.data }} </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
+</div>
 </body>
 </html>

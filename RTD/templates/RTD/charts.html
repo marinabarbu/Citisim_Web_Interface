@@ -9,7 +9,7 @@
         <canvas id="myChart" width="800" height="350"></canvas>
         <canvas id="myChart2" width="800" height="350"></canvas>
         <canvas id="myChart3" width="800" height="350"></canvas>
-        <button class='btn btn-success' onclick="updateChart()">Refresh</button>
+        <button class='btn btn-success' onclick="ajaxUpdateChart()">Refresh</button>
     </div>
 </div>
 
@@ -22,7 +22,26 @@ var defaultData_august = []
 var labels_august = [];
 var defaultData_septembrie = []
 var labels_septembrie = [];
-setInterval(function(){ ajaxCall(); }, 3000);
+
+$.ajax({
+        method: "GET",
+        url: endpoint,
+        success: function(data){
+            labels_iulie = data.labels_iulie
+            defaultData_iulie = data.default_iulie
+            labels_august = data.labels_august
+            defaultData_august = data.default_august
+            labels_septembrie = data.labels_septembrie
+            defaultData_septembrie = data.default_septembrie
+            setChart()
+        },
+        error: function(error_data){
+            console.log("error")
+            console.log(error_data)
+        }
+    })
+
+setInterval(function(){ ajaxCall(); }, 300000);
 
 function ajaxCall(){
     $.ajax({
@@ -44,6 +63,22 @@ function ajaxCall(){
     })
 }
 
+
+function ajaxUpdateChart(){
+    $.ajax({
+        method: "GET",
+        url: endpoint,
+        success: function(data){
+            labels_septembrie = data.labels_septembrie
+            defaultData_septembrie = data.default_septembrie
+            updateChart()
+        },
+        error: function(error_data){
+            console.log("error")
+            console.log(error_data)
+        }
+    })
+}
 
 var ctx = document.getElementById('myChart');
 var ctx2 = document.getElementById('myChart2');

@@ -15,7 +15,17 @@ from django.contrib.auth import get_user_model
 
 def index(request):
     all_energy = Energy.objects.all()
-    return render(request, 'RTD/index.html', {'all_energy' : all_energy})
+    sensors = set()
+    for e in all_energy:
+        sensors.add(e.source)
+    sensorList = list(sensors)
+
+    context = {
+        "all_energy": all_energy,
+        "sensor_list": sensorList,
+    }
+
+    return render(request, 'RTD/index.html', {'all_energy': all_energy})
 
 energy_set = set()
 def select(request):
@@ -49,27 +59,6 @@ def get_data(request):
     all_energy = Energy.objects.all()
     return render(request, 'RTD/get_data.html', {'all_energy' : all_energy})
 
-class LineChartJSONView(BaseLineChartView):
-    def get_labels(self):
-        """Return 7 labels for the x-axis."""
-        return ["January", "February", "March", "April", "May", "June", "July"]
-
-    def get_providers(self):
-        """Return names of datasets."""
-        return ["Central", "Eastside", "Westside"]
-
-    def get_data(self):
-        """Return 3 datasets to plot."""
-
-        return [[75, 44, 92, 11, 44, 95, 35],
-                [41, 92, 18, 3, 73, 87, 92],
-                [87, 21, 94, 3, 90, 13, 65]]
-
-
-line_chart = TemplateView.as_view(template_name='line_chart.html')
-line_chart_json = LineChartJSONView.as_view()
-
-User = get_user_model()
 class HomeView(View):
     def get(self, request, *args, **kwargs):
         all_energy = Energy.objects.all()
@@ -92,7 +81,7 @@ class ChartData(APIView):
             august_labels.append(e.idd)
             august_data.append(e.data)
 
-        all_energy = Energy.objects.filter(time_string__startswith='09', source='000111AA')
+        all_energy = Energy.objects.filter(time_string__startswith='09', source='0A06FF0000000003')
         septembrie_labels, septembrie_data = [], []
         for e in all_energy:
             septembrie_labels.append(e.idd)
