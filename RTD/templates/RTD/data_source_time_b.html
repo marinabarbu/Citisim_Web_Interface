@@ -133,20 +133,22 @@
             </td>
             <td>
                 <select class="select" onchange="javascript:location.href = this.value;">
-                <option>--Begin--</option>
+                <option>{{ time_b }}</option>
                 {% for t in list_time %}
                 <option value="/RTD/{{ sensor }}/{{ t }}">{{ t }}</option>
                 {% endfor %}
                 </select>
             </td>
             <td>
-                <select class="select">
+                <select class="select" onchange="javascript:location.href = this.value;">
                 <option value="">--Now--</option>
                 {% for t in list_time %}
                 <option value="">{{ t }}</option>
                 {% endfor %}
                 </select>
             </td>
+        </tr>
+        <tr>
         </tr>
     </table>
 

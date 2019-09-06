@@ -47,18 +47,35 @@ def detail(request, e_idd):
         raise Http404("Nu exista aceasta data")
     return render(request, 'RTD/detail.html', {'e': e})
 
+all_energy = Energy.objects.all()
+
 def data_source(request, e_source):
-    all_energy_sensor = Energy.objects.filter(source=e_source)
-    all_energy = Energy.objects.all()
-    sensors = set()
+    all_energy = Energy.objects.filter(source=e_source)
+    list_time = list(set([e.time_string[0:10] for e in all_energy]))
+    sensorList = list(set([e.source for e in Energy.objects.all()]))
     sensor = e_source
-    for e in all_energy:
-        sensors.add(e.source)
-    sensorList = list(sensors)
-    all_energy_sensor = all_energy_sensor[::-1]
-    return render(request, 'RTD/data_source.html', {'all_energy' : all_energy_sensor,
+    return render(request, 'RTD/data_source.html', {'all_energy' : all_energy,
                                                     'sensor_list': sensorList,
-                                                    'sensor': sensor})
+                                                    'sensor': sensor,
+                                                    'list_time': list_time})
+
+def data_source_time_b(request, e_source, e_time_b):
+    sensorList = list(set([e.source for e in Energy.objects.all()]))
+    sensor = e_source
+    time_b = e_time_b
+    list_time = list(set([e.time_string[0:10] for e in all_energy]))
+    for e in all_energy:
+        if e.time_string[0:10] == e_time_b:
+            index = e.idd
+            energy_list = all_energy[index-1:]
+            list_time = list(set([e.time_string[0:10] for e in energy_list]))
+            break
+    #all_energy = list(energy_list)
+    return render(request, 'RTD/data_source.html', {'all_energy': all_energy,
+                                                    'sensor_list': sensorList,
+                                                    'sensor': sensor,
+                                                    'list_time': list_time,
+                                                    'time_b': time_b})
 
 def get_data(request):
     all_energy = Energy.objects.all()
