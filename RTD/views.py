@@ -19,13 +19,9 @@ def index(request):
     for e in all_energy:
         sensors.add(e.source)
     sensorList = list(sensors)
-
-    context = {
-        "all_energy": all_energy,
-        "sensor_list": sensorList,
-    }
-
-    return render(request, 'RTD/index.html', {'all_energy': all_energy})
+    all_energy = all_energy[::-1]
+    return render(request, 'RTD/index.html', {"all_energy": all_energy,
+                                              "sensor_list": sensorList})
 
 energy_set = set()
 def select(request):
@@ -52,8 +48,17 @@ def detail(request, e_idd):
     return render(request, 'RTD/detail.html', {'e': e})
 
 def data_source(request, e_source):
-    all_energy = Energy.objects.filter(source=e_source)
-    return render(request, 'RTD/data_source.html', {'all_energy' : all_energy})
+    all_energy_sensor = Energy.objects.filter(source=e_source)
+    all_energy = Energy.objects.all()
+    sensors = set()
+    sensor = e_source
+    for e in all_energy:
+        sensors.add(e.source)
+    sensorList = list(sensors)
+    all_energy_sensor = all_energy_sensor[::-1]
+    return render(request, 'RTD/data_source.html', {'all_energy' : all_energy_sensor,
+                                                    'sensor_list': sensorList,
+                                                    'sensor': sensor})
 
 def get_data(request):
     all_energy = Energy.objects.all()

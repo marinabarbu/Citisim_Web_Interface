@@ -10,6 +10,74 @@
     <script src="js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href = "{% static 'RTD/style.css' %}">
 
+    <style>
+        select.select{
+            padding-left:5em
+            margin: 5 auto;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+        }
+
+        div.ex2{
+            margin: 0 auto;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div.ex1{
+            margin:10 auto;
+            width: 1000px;
+            height: 600px;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+            background: white url("static/RTD/images/background.png");
+            box-shadow: 0 10px 100px rgba(0,0,0,0.5);
+        }
+
+        table, th, td{
+            border: 1px solid #005277;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        table{
+            width: 100%;
+        }
+
+        table, th, td
+        {
+            border: 1px solid #1a1a1a;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th
+        {
+            position: sticky;
+            top: 0;
+            background: #a6a6a6;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        tr th:nth-child(1)
+        {
+            width: 60px;
+            text-align: center;
+            background: #a6a6a6;
+        }
+
+        tr td:nth-child(1)
+        {
+            background: #a6a6a6;
+            text-align: center;
+            color: #fff;
+        }
+
+    </style>
+
 </head>
 <body>
 <!--Navbar-->
@@ -39,7 +107,20 @@
 <!--/.Navbar-->
 
 <!--{% if all_energy %} -->
-    <div class="overflow-auto">
+
+
+<div class="ex2">
+    <p>&emsp; Select the sensor:</p>
+    &emsp;<select class="select" onchange="javascript:location.href = this.value;">
+        <option value="">--Select--</option>
+        {% for s in sensor_list %}
+        <option value="/RTD/{{ s }}/">{{ s }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+    <div class="ex1">
+        Data table for sensor {{ sensor }}
     <table class="table table-striped">
         <thead>
           <tr>
