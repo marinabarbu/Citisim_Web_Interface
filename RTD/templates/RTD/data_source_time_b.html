@@ -133,14 +133,14 @@
             </td>
             <td>
                 <select class="select" onchange="javascript:location.href = this.value;">
-                <option>{{ time_b }}</option>
+                <option>--Begin--</option>
                 {% for t in list_time %}
                 <option value="/RTD/{{ sensor }}/{{ t }}">{{ t }}</option>
                 {% endfor %}
                 </select>
             </td>
             <td>
-                <select class="select" onchange="javascript:location.href = this.value;">
+                <select class="select">
                 <option value="">--Now--</option>
                 {% for t in list_time %}
                 <option value="">{{ t }}</option>
@@ -148,27 +148,13 @@
                 </select>
             </td>
         </tr>
-        <tr>
-        </tr>
     </table>
 
 </div>
-<!--
-<div class="ex2">
-    <p>&emsp; Select the sensor:</p>
-    &emsp;<select class="select" onchange="javascript:location.href = this.value;">
-        <option value="">--Select--</option>
-        {% for s in sensor_list %}
-        <option value="/RTD/{{ s }}/">{{ s }}</option>
-        {% endfor %}
-    </select>
-
-</div>
--->
 
 
     <div class="ex1">
-        Data table for sensor {{ sensor }}
+        Data table for sensor {{ sensor }} from day {{ time_b }}
     <table class="table table-striped">
         <thead>
           <tr>
