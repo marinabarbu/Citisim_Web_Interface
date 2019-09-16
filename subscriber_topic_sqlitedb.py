@@ -7,13 +7,19 @@ import sqlite3
 import mysql.connector
 from mysql.connector import Error
 import time
-
+from urllib.request import urlopen
 
 NOTIFY_MSG = '''
 New notification:
   * data: {:.6f}
   * source: {}'''
 
+def internet_on():
+    try:
+        urlopen('http://www.google.com')
+        return True
+    except:
+        return False
 
 class Subscriber:
     def run(self, args):
@@ -57,37 +63,40 @@ class Subscriber:
         print(NOTIFY_MSG.format(value, source))
         # for key in metadata:
         print("  * {}: {}".format("timestamp", metadata["timestamp"]))
+        if internet_on():
+            # Process
+            try:
+                named_tuple = time.localtime()  # get struct_time
+                time_string = time.strftime("%m/%d/%Y, %H:%M:%S", named_tuple)
+                print(time_string)
+                sqlFormula = "INSERT INTO energy(timestamp, source, data, time) VALUES (%s,%s,%s,%s)"
+                val = (str(metadata["timestamp"]),str(source), str(value), str(time_string))
+                '''mycursor.execute(sqlFormula, val)
+                mydb.commit()
+                request = "INSERT INTO energy (timestamp, source, data, time) VALUES (" + str(
+                    metadata["timestamp"]) + ", '" + str(source) + "', " + str(value) + ", '" + str(time_string) + ");"
+                    '''
 
-        # Process
-        try:
-            named_tuple = time.localtime()  # get struct_time
-            time_string = time.strftime("%m/%d/%Y, %H:%M:%S", named_tuple)
-            print(time_string)
-            sqlFormula = "INSERT INTO energy(timestamp, source, data, time) VALUES (%s,%s,%s,%s)"
-            val = (str(metadata["timestamp"]),str(source), str(value), str(time_string))
-            '''mycursor.execute(sqlFormula, val)
-            mydb.commit()
-            request = "INSERT INTO energy (timestamp, source, data, time) VALUES (" + str(
-                metadata["timestamp"]) + ", '" + str(source) + "', " + str(value) + ", '" + str(time_string) + ");"
-                '''
+                self.cursor.execute(sqlFormula, val)
+                self.connection.commit()
+                print("Record inserted successfully into table")
 
-            self.cursor.execute(sqlFormula, val)
-            self.connection.commit()
-            print("Record inserted successfully into table")
-
-            connslt = sqlite3.connect("db.sqlite3")
-            cursorslt = connslt.cursor()
-            cursorslt.execute("INSERT INTO RTD_energy(idd,timestamp, source, data, time_string) VALUES (?,?,?,?,?)",
-                           [self.cursor.lastrowid,
-                            str(metadata["timestamp"]),
-                            str(source),
-                            str(value),
-                            str(time_string)])
-            connslt.commit()
-            connslt.close()
-        except mysql.connector.Error as error:
-            connection.rollback()  # rollback if any exception occured
-            print("Failed inserting record into table {}".format(error))
+                connslt = sqlite3.connect("db.sqlite3")
+                cursorslt = connslt.cursor()
+                cursorslt.execute("INSERT INTO RTD_energy(idd,timestamp, source, data, time_string) VALUES (?,?,?,?,?)",
+                               [self.cursor.lastrowid,
+                                str(metadata["timestamp"]),
+                                str(source),
+                                str(value),
+                                str(time_string)])
+                connslt.commit()
+                connslt.close()
+            except mysql.connector.Error as error:
+                connection.rollback()  # rollback if any exception occured
+                print("Failed inserting record into table {}".format(error))
+        else:
+            time.sleep(5)
+            Subscriber.run()
 
 
 if __name__ == "__main__":
