@@ -9,6 +9,7 @@ from django.views.generic import View
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.contrib.auth import get_user_model
+import datetime
 
 # Create your views here.
 # FUNCTII care iau cererea user ului si raspund la cerere
@@ -25,14 +26,18 @@ def index(request):
     return render(request, 'RTD/index.html', {"all_energy": all_energy,
                                               "sensor_list": sensorList})
 
+
 energy_set = set()
+
+
 def select(request):
     all_energy = Energy.objects.all()
-    #energy_set = set()
+    # energy_set = set()
     for e in all_energy:
         energy_set.add(e.time_string[0:10])
     energy_time = list(energy_set)
     return render(request, 'RTD/select.html', {'energy_time': energy_time})
+
 
 def action_action(request):
     if request.GET.get('action_button'):
@@ -42,53 +47,65 @@ def action_action(request):
 
 
 def detail(request, e_idd):
-    #return HttpResponse("<h2>Details from Album id: " + str(e_id) + "</h2>")
+    # return HttpResponse("<h2>Details from Album id: " + str(e_id) + "</h2>")
     try:
         e = Energy.objects.all().get(idd=e_idd)
     except Energy.DoesNotExist:
         raise Http404("Nu exista aceasta data")
     return render(request, 'RTD/detail.html', {'e': e})
 
+
 all_energy = Energy.objects.all()
 sensor = ''
+
+
 def data_source(request, e_source):
     all_energy = Energy.objects.filter(source=e_source)
     for i in range(len(all_energy)):
         all_energy[i].time_string = all_energy[i].time_string.replace("/", "_")
     time_list = list(set([e.time_string[0:10] for e in all_energy]))
-    time_list = sorted(sorted(sorted(time_list, key= lambda x: x[2:5]), key= lambda x: x[0:2]), key=lambda x: x[6:])
-    return render(request, 'RTD/data_source.html', {'all_energy' : all_energy,
+    time_list = sorted(sorted(sorted(time_list, key=lambda x: x[2:5]), key=lambda x: x[0:2]), key=lambda x: x[6:])
+    return render(request, 'RTD/data_source.html', {'all_energy': all_energy,
                                                     'sensor': e_source,
                                                     'time_list': time_list})
 
+
 def data_source_time_b(request, e_source, e_time_b):
+    min_time_obj = datetime.datetime.strptime(e_time_b, "%m_%d_%Y")
+
     all_energy = Energy.objects.filter(source=e_source)
+    all_energy = list(filter(lambda x:  x.time_obj >= min_time_obj, all_energy))
+
     for i in range(len(all_energy)):
         all_energy[i].time_string = all_energy[i].time_string.replace("/", "_")
     time_list = list(set([e.time_string[0:10] for e in all_energy]))
-    time_list = sorted(sorted(sorted(time_list, key= lambda x: x[2:5]), key= lambda x: x[0:2]), key=lambda x: x[6:])
+    time_list = sorted(sorted(sorted(time_list, key=lambda x: x[2:5]), key=lambda x: x[0:2]), key=lambda x: x[6:])
     energy_list = []
     index = 1
     for e in all_energy:
         if str(e.time_string[0:10]) == str(e_time_b):
             index = int(e.idd)
-            energy_list = all_energy[index-1:]
+            energy_list = all_energy[index - 1:]
             time_list = list(set([e.time_string[0:10] for e in energy_list]))
-            time_list = sorted(sorted(sorted(time_list, key=lambda x: x[2:5]), key=lambda x: x[0:2]), key=lambda x: x[6:])
+            time_list = sorted(sorted(sorted(time_list, key=lambda x: x[2:5]), key=lambda x: x[0:2]),
+                               key=lambda x: x[6:])
             break
-    return render(request, 'RTD/data_source.html', {'all_energy': energy_list,
-                                                    'sensor': e_source,
-                                                    'list_time': time_list,
-                                                    'time_b': e_time_b})
+    return render(request, 'RTD/data_source_time_b.html', {'all_energy': all_energy,
+                                                           'sensor': e_source,
+                                                           'time_list': time_list,
+                                                           'time_b': e_time_b})
+
 
 def get_data(request):
     all_energy = Energy.objects.all()
-    return render(request, 'RTD/get_data.html', {'all_energy' : all_energy})
+    return render(request, 'RTD/get_data.html', {'all_energy': all_energy})
+
 
 class HomeView(View):
     def get(self, request, *args, **kwargs):
         all_energy = Energy.objects.all()
         return render(request, 'RTD/charts.html')
+
 
 class ChartData(APIView):
     authentication_classes = []

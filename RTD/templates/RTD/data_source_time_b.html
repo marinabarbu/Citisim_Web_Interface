@@ -1,14 +1,20 @@
 {% load staticfiles %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 <link rel="stylesheet" type="text/css" href = "{% static 'RTD/style.css' %}">
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" >
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href = "{% static 'RTD/style.css' %}">
     <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href = "{% static 'RTD/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
     <style>
         select.select{
@@ -78,10 +84,12 @@
 
     </style>
 
+
 </head>
 <body>
+
 <!--Navbar-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar fixes-top navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand">CitiSim</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -104,81 +112,44 @@
     </form>
   </div>
 </nav>
-<!--/.Navbar-->
 
-<!--{% if all_energy %} -->
 
+<div class="ex2">
+    <p>&emsp; Select the begining time:</p>
+    &emsp;<select class="select" onchange="javascript:location.href = this.value;">
+        <option value="">--Select--</option>
+        {% for t in time_list %}
+        <option value="/RTD/{{ sensor }}/{{ t }}/">{{ t }}</option>
+        {% endfor %}
+    </select>
+</div>
 
 <div>
-    <table>
-        <tr>
-            <td>
-                Select the sensor:
-            </td>
-            <td>
-                From:
-            </td>
-            <td>
-                To:
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <select class="select" onchange="javascript:location.href = this.value;">
-                <option value="">--Select--</option>
-                {% for s in sensor_list %}
-                <option value="/RTD/{{ s }}/">{{ s }}</option>
-                {% endfor %}
-                </select>
-            </td>
-            <td>
-                <select class="select" onchange="javascript:location.href = this.value;">
-                <option>--Begin--</option>
-                {% for t in list_time %}
-                <option value="/RTD/{{ sensor }}/{{ t }}">{{ t }}</option>
-                {% endfor %}
-                </select>
-            </td>
-            <td>
-                <select class="select">
-                <option value="">--Now--</option>
-                {% for t in list_time %}
-                <option value="">{{ t }}</option>
-                {% endfor %}
-                </select>
-            </td>
-        </tr>
-    </table>
 
 </div>
 
-
-    <div class="ex1">
-        Data table for sensor {{ sensor }} from day {{ time_b }}
-    <table class="table table-striped">
+<div class="ex1">
+    Data from {{ sensor }} sensor and from {{ time_b }}
+    <table>
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Time</th>
-            <th scope="col">Value</th>
+            <th>ID</th>
+            <th>Source</th>
+            <th>Time</th>
+            <th>Value</th>
           </tr>
-          </thead>
-            <tbody>
+        </thead>
+        <tbody>
             {% for e in all_energy %}
             <tr>
                 <td><a href="/RTD/{{ e.idd }}/">{{ e.idd }}</a></td>
+                <td><a href="/RTD/{{ e.source }}/">{{ e.source }} </a></td>
                 <td>{{ e.time_string }} </td>
                 <td>{{ e.data }} </td>
             </tr>
             {% endfor %}
-
         </tbody>
     </table>
-    </div>
-<!--
-{% else %}
-    <h3>Nu ai date despre energie</h3>
-{% endif %}
--->
+</div>
 </body>
 </html>
