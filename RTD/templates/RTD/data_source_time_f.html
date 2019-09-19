@@ -113,23 +113,12 @@
   </div>
 </nav>
 
-
-<div class="ex2">
-    <p>&emsp; Select the end time:</p>
-    &emsp;<select class="select" onchange="javascript:location.href = this.value;">
-        <option value="">--Select--</option>
-        {% for t in time_list %}
-        <option value="/RTD/{{ sensor }}/{{ time_b }}/{{ t }}">{{ t }}</option>
-        {% endfor %}
-    </select>
-</div>
-
 <div>
 
 </div>
 
 <div class="ex1">
-    Data from {{ sensor }} sensor and from {{ time_b }}
+    Data from {{ sensor }} sensor and from {{ time_b }} to {{ time_f }}
     <table>
         <thead>
           <tr>

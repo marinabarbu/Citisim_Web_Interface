@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="965f1c79-ea0c-48b5-892e-6bdec3e2f8df" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/RTD/templates/RTD/data_source_time_f.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RTD/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RTD/templates/RTD/data_source_time_b.html" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/templates/RTD/data_source_time_b.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RTD/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RTD/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/RTD/views.py" afterDir="false" />
@@ -238,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568642741448</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="solved the problem with the url for data selection">
+      <created>1568732965643</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1568732965643</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -275,6 +282,8 @@
     <MESSAGE value="select block -&gt; to select the time" />
     <MESSAGE value="url for selecting" />
     <MESSAGE value="solved the problem with the Internet connection(after disconnection and then connection to the internet the data is sent again)" />
-    <option name="LAST_COMMIT_MESSAGE" value="solved the problem with the Internet connection(after disconnection and then connection to the internet the data is sent again)" />
+    <MESSAGE value="solved the problem with the url for data selecting" />
+    <MESSAGE value="solved the problem with the url for data selection" />
+    <option name="LAST_COMMIT_MESSAGE" value="solved the problem with the url for data selection" />
   </component>
 </project>
