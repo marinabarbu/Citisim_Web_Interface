@@ -15,7 +15,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script>
+        function calculate_price(){
+            var field1 = document.getElementById("price").value;
+            var field2 = {{ total }};
 
+            var result = parseFloat(field1)*parseFloat(field2);
+            if(!isNaN(result)){
+                document.getElementById("answer").innerHTML="The total cost is: " + result;
+            }
+        }
+    </script>
     <style>
         select.select{
             padding-left:5em
@@ -112,6 +122,18 @@
     </form>
   </div>
 </nav>
+
+<div class="ex2">
+    <p>&emsp;Total units in this period: {{ total }}</p>
+    <p> Add price per/unit </p>
+    <input name="price" id="price">
+    <button onclick="calculate_price()">Calculate</button>
+    <p id="answer"></p>
+</div>
+
+
+
+
 
 <div>
 

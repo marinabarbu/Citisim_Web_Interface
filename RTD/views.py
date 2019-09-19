@@ -95,11 +95,13 @@ def data_source_time_f(request, e_source, e_time_b, e_time_f):
         all_energy[i].time_string = all_energy[i].time_string.replace("/", "_")
     time_list = list(set([e.time_string[0:10] for e in all_energy]))
     time_list = sorted(sorted(sorted(time_list, key=lambda x: x[2:5]), key=lambda x: x[0:2]), key=lambda x: x[6:])
+    total = sum(e.data for e in all_energy)
     return render(request, 'RTD/data_source_time_f.html', {'all_energy': all_energy,
                                                            'sensor': e_source,
                                                            'time_list': time_list,
                                                            'time_b': e_time_b,
-                                                           'time_f': e_time_f})
+                                                           'time_f': e_time_f,
+                                                           'total': total})
 
 
 def get_data(request):
