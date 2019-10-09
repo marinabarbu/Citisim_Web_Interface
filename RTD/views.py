@@ -120,6 +120,7 @@ class ChartData(APIView):
     permission_classes = []
 
     def get(self, request, format=None):
+
         all_energy = Energy.objects.filter(time_string__startswith='07', source='0A06FF0000000003')
         iulie_labels, iulie_data = [], []
         for e in all_energy:
@@ -134,7 +135,9 @@ class ChartData(APIView):
         all_energy = Energy.objects.filter(time_string__startswith='09', source='0A06FF0000000003')
         septembrie_labels, septembrie_data = [], []
         for e in all_energy:
-            septembrie_labels.append(e.idd)
+            #min_time_obj = datetime.datetime.strptime(e_time_b, "%m_%d_%Y")
+            time_elem = datetime.datetime.strptime(e.time_string, "%m/%d/%Y, %H:%M:%S")
+            septembrie_labels.append(time_elem)
             septembrie_data.append(e.data)
         data = {
             "labels_iulie": iulie_labels,

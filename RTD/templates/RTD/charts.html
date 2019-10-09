@@ -22,7 +22,7 @@ var defaultData_august = []
 var labels_august = [];
 var defaultData_septembrie = []
 var labels_septembrie = [];
-
+var timeFormat = 'DD/MM/YYYY';
 ajaxCall()
 
 $.ajax({
@@ -115,7 +115,8 @@ function setChart(){
                     label: 'Septembrie',
                     data: defaultData_septembrie,
                 }]
-            }
+            },
+
         })
 }
 
